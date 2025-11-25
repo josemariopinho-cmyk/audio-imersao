@@ -94,7 +94,7 @@
         <p class="subtitle">Exercício de Imersão Sensorial</p>
         
         <audio id="audioPlayer" controls>
-            <source src="https://drive.google.com/uc?export=download&id=1P-6rHT2osvyCgzN-X63MPZxKT_InaoPU" type="audio/mpeg">
+            <source src="https://archive.org/download/aeroporto-24.11-1/AEROPORTO%2024.11%20%281%29.mp3" type="audio/mpeg">
             Seu navegador não suporta a tag de áudio.
         </audio>
         
@@ -106,33 +106,4 @@
     </div>
 
     <script>
-        function playAudio() {
-            const audio = document.getElementById('audioPlayer');
-            audio.play().catch(err => {
-                console.log('Erro ao reproduzir:', err);
-            });
-        }
-
-        // Tentar autoplay ao carregar a página
-        window.addEventListener('load', function() {
-            const audio = document.getElementById('audioPlayer');
-            if (audio) {
-                // Tenta reproduzir automaticamente
-                audio.play().catch(err => {
-                    console.log('Autoplay bloqueado. Use o botão para iniciar.');
-                });
-            }
-        });
-
-        // Tentar autoplay ao interagir com a página
-        document.addEventListener('click', function() {
-            const audio = document.getElementById('audioPlayer');
-            if (audio && audio.paused) {
-                audio.play().catch(err => {
-                    console.log('Erro ao reproduzir.');
-                });
-            }
-        }, { once: true });
-    </script>
-</body>
-</html>
+        function playAudio()
