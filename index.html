@@ -69,6 +69,23 @@
         .instrucoes strong {
             color: #fff;
         }
+        
+        .play-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid white;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .play-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -76,10 +93,12 @@
         <h1>🎧 Escuta Atenta</h1>
         <p class="subtitle">Exercício de Imersão Sensorial</p>
         
-        <audio controls autoplay>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <audio id="audioPlayer" controls>
+            <source src="https://drive.google.com/uc?export=download&id=1P-6rHT2osvyCgzN-X63MPZxKT_InaoPU" type="audio/mpeg">
             Seu navegador não suporta a tag de áudio.
         </audio>
+        
+        <button class="play-button" onclick="playAudio()">▶️ Clique para Iniciar</button>
         
         <div class="instrucoes">
             <p><strong>Escute com atenção e concentração</strong></p>
@@ -87,15 +106,33 @@
     </div>
 
     <script>
+        function playAudio() {
+            const audio = document.getElementById('audioPlayer');
+            audio.play().catch(err => {
+                console.log('Erro ao reproduzir:', err);
+            });
+        }
+
+        // Tentar autoplay ao carregar a página
         window.addEventListener('load', function() {
-            const audio = document.querySelector('audio');
+            const audio = document.getElementById('audioPlayer');
             if (audio) {
+                // Tenta reproduzir automaticamente
                 audio.play().catch(err => {
-                    console.log('Autoplay bloqueado.');
+                    console.log('Autoplay bloqueado. Use o botão para iniciar.');
                 });
             }
         });
+
+        // Tentar autoplay ao interagir com a página
+        document.addEventListener('click', function() {
+            const audio = document.getElementById('audioPlayer');
+            if (audio && audio.paused) {
+                audio.play().catch(err => {
+                    console.log('Erro ao reproduzir.');
+                });
+            }
+        }, { once: true });
     </script>
 </body>
 </html>
-
